@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard Sample</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <link rel="stylesheet" type="text/css" href="../../assets/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../assets/css/keen-dashboards.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-r/qnS4YZBLuBSKeVc+sM4eUYUiJMFhkHfx1nwlErHhTd+NgeJlN/NiiTd6jbKJzm" crossorigin="anonymous">
+     <style>
+  .application .navbar-inverse, .keen-dashboard .navbar-inverse {
+    opacity: 0.8;
+    background-color: #000 !important;
+    min-height: 50px;
+    height: 55px;
+  }
+  .navbar {
+    font-family: Montserrat;
+    font-weight: 300;
+    font-size: 16px;
+    height:55px;
+    min-height: 50px;
+  }
+  .navbar:hover {
+    min-height: 50px;
+    height: 55px;
+  }
+  .application .navbar-inverse, .keen-dashboard .navbar-inverse:hover {
+    height: 55px;
+  }
+
+  .chart-wrapper .chart-title {
+   /* font-weight: 400;*/
+    color: #020202;
+  }
+
+/*  .chart-stage { 
+    height: 250px; 
+  }*/
+
+  .chart-stage {
+  border-bottom: medium none;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+  </style>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="http://datamaps.github.io/scripts/0.4.4/datamaps.usa.min.js"></script>
+     
+  
+</div>
+
+</head>
+
+<body class="application">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid" style="height: 50px;">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" style="height:55px;" href="../">
+          <span class="glyphicon glyphicon-signal"></span>
+        </a>
+        <a class="navbar-brand" style="height:55px;" href="./">Dashboard</a>
+      </div>
+      <div class="navbar-collapse collapse" style="height:55px; font-size: 15px;">
+        <ul class="nav navbar-nav navbar-left" style="height:55px;">
+          
+          <li style="height:55px;"><a href="https://keen.io/team" style="height:55px;">Internal</a></li>
+      <!--     <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/examples/starter-kit">Source</a></li> -->
+          <li style="height:55px;"><a href="https://groups.google.com/forum/#!forum/keen-io-devs" style="height:55px;">Users</a></li><li style="height:55px;"><a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15" style="height:55px;">Technical Support</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-8">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Sales Trends (past 12 months)
+          </div>
+          <div class="chart-stage">
+            <div id="chart-01"></div>
+          </div>
+          <div class="chart-notes">
+            This is a sample text region to describe this chart.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Pageviews by browser (past 5 days)
+          </div><br>
+        <center>
+
+               <font size="20" color="#555">
+          $38.9k</font> &nbsp;<font size="13" style="color:#00bbde;" ><span class="glyphicon glyphicon-triangle-top" aria-hidden="true" style="top:4px;"></span></font><div class="chart-title knob-title" style="color:#777777; border-bottom:0px;">
+         
+              <b>Profit Today </b>
+              </div><br>
+
+          
+
+               <font size="20" color="#555">
+          6,200</font> &nbsp;<font size="13" style="color:#00bbde;" ><span class="glyphicon glyphicon-triangle-top" aria-hidden="true" style="top:4px;"></span>
+          </font><div class="chart-title knob-title" style="color:#777; border-bottom:0px;">
+         
+              <b>Orders Sold</b>
+              </div>
+</center>
+          <div class="chart-notes" style="margin-top: 20px;">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-sm-4">
+
+
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Performance Map
+          </div>
+          <div class="chart-stage">
+            <div id="chart3" style="position: relative; width: 420px; height: 250px;"></div>
+
+
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+
+    <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Pageviews by browser (past 5 days)
+          </div>
+          <div class="chart-stage">
+            <div id="chart-02"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-sm-4" style="height: 350px;">
+        <div class="chart-wrapper" >
+          <div class="chart-title">
+            Stats
+          </div>
+         
+          <div class="chart-stage">
+            <div class="col-sm-6">
+            <br>
+            <div class="chart-title knob-title" style="border-bottom:0px; color:#777;">
+              <br><b>Mobile</b>
+              </div></div>
+              <div class="col-sm-6">
+              <br>
+              <div class="chart-title knob-title" style="border-bottom:0px; color:#777;">
+              <br><b>Desktop</b>
+              </div></div></div>
+                <br>
+
+              <img style="padding-left:50px;"src="1.png" width="380px" >
+              <!-- 
+                <div class="chart-title knob-title">
+                  New Activations Today
+                </div>
+                <div class="chart-stage">
+                  <input type="text" class="users" value="0"/>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="chart-title knob-title">
+                  Device Crashes Today
+                </div> -->
+             <!--    <div class="chart-stage">
+                  <input type="text" class="errors" value="0"/>
+                </div> --><br>
+          <div class="chart-notes" style="margin-top: 22px;">
+            Notes go down here
+          </div>
+          </div>
+        </div>
+      </div>
+
+<!--       <div class="col-sm-4">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Impressions by country
+          </div>
+          <div class="chart-stage">
+            <div id="chart-05"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+ -->
+  
+
+    <div class="row">
+            <div class="col-sm-12">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            Impressions by advertiser
+          </div>
+          <div class="chart-stage">
+            <div id="chart-03"></div>
+          </div>
+          <div class="chart-notes">
+            Notes go down here
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+<!-- 
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="chart-wrapper">
+          <img data-src="holder.js/100%x150/white">
+        </div>
+      </div>
+    </div> -->
+
+    <hr>
+
+   
+  </div>
+
+  <script type="text/javascript" src="../../assets/lib/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../../assets/lib/holderjs/holder.js"></script>
+<script>
+var map = new Datamap({
+  scope: 'usa',
+  element: document.getElementById('chart3'),
+  geographyConfig: {
+    highlightBorderColor: '#bada55',
+   popupTemplate: function(geography, data) {
+      return '<div class="hoverinfo">' + geography.properties.name + 'Electoral Votes:' +  data.electoralVotes + ' '
+    },
+    highlightBorderWidth: 3
+  },
+
+  fills: {
+  'Republican': '#fe6672',
+  'Democrat': '#00bbde',
+  'Heavy Democrat': '#eeb058',
+  'Light Democrat': '#eeb058',
+  'Heavy Republican': '#8a8ad6',
+  'Light Republican': '#8a8ad6',
+  defaultFill: '#999'
+},
+data:{
+  "AZ": {
+      "fillKey": "Republican",
+      "electoralVotes": 5
+  },
+  "CO": {
+      "fillKey": "Light Democrat",
+      "electoralVotes": 5
+  },
+  "DE": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "FL": {
+      "fillKey": "UNDECIDED",
+      "electoralVotes": 29
+  },
+  "GA": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "HI": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "ID": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "IL": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "IN": {
+      "fillKey": "Republican",
+      "electoralVotes": 11
+  },
+  "IA": {
+      "fillKey": "Light Democrat",
+      "electoralVotes": 11
+  },
+  "KS": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "KY": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "LA": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "MD": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "ME": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "MA": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "MN": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "MI": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "MS": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "MO": {
+      "fillKey": "Republican",
+      "electoralVotes": 13
+  },
+  "MT": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "NC": {
+      "fillKey": "Light Republican",
+      "electoralVotes": 32
+  },
+  "NE": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "NV": {
+      "fillKey": "Heavy Democrat",
+      "electoralVotes": 32
+  },
+  "NH": {
+      "fillKey": "Light Democrat",
+      "electoralVotes": 32
+  },
+  "NJ": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "NY": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "ND": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "NM": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "OH": {
+      "fillKey": "UNDECIDED",
+      "electoralVotes": 32
+  },
+  "OK": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "OR": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "PA": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "RI": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "SC": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "SD": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "TN": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "TX": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "UT": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "WI": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "VA": {
+      "fillKey": "Light Democrat",
+      "electoralVotes": 32
+  },
+  "VT": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "WA": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "WV": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "WY": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "CA": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "CT": {
+      "fillKey": "Democrat",
+      "electoralVotes": 32
+  },
+  "AK": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "AR": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  },
+  "AL": {
+      "fillKey": "Republican",
+      "electoralVotes": 32
+  }
+}
+});
+// map.labels();
+    // Draw a legend for this map
+    map.legend();
+ Holder.add_theme("white", { background:"#fff", foreground:"#a7a7a7", size:10 });
+
+</script>
+
+  <script type="text/javascript" src="../../assets/lib/keen-js/dist/keen.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/meta.js"></script>
+  <script type="text/javascript" src="keen.dashboard.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>
+</html>
